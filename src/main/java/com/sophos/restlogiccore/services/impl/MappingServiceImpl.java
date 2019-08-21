@@ -42,6 +42,4 @@ public class MappingServiceImpl implements IMappingService {
 
 	}
 
-	
-
 }

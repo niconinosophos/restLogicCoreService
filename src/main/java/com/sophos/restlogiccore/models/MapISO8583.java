@@ -2,8 +2,8 @@ package com.sophos.restlogiccore.models;
 
 import java.util.Hashtable;
 
-public class JsonISO8583 {
-	
+public class MapISO8583 {
+
 	private Hashtable<Integer, String> fields;
 
 	public Hashtable<Integer, String> getFields() {
@@ -14,5 +14,4 @@ public class JsonISO8583 {
 		this.fields = fields;
 	}
 
-	
 }
