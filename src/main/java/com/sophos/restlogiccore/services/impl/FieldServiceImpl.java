@@ -42,4 +42,9 @@ public class FieldServiceImpl implements IFieldService {
 
 	}
 
+	@Override
+	public Field findByFieldIsoId(int fieldIsoId) {
+		return repo.findByFieldIsoId(fieldIsoId);
+	}
+
 }

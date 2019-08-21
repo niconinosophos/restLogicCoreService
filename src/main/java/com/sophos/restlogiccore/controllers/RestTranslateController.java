@@ -1,5 +1,8 @@
 package com.sophos.restlogiccore.controllers;
 
+import java.util.HashMap;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sophos.restlogiccore.dtos.Mapping;
 import com.sophos.restlogiccore.models.ListenerRequest;
 import com.sophos.restlogiccore.models.TranslateResponse;
+import com.sophos.restlogiccore.services.IFieldService;
 import com.sophos.restlogiccore.services.IMappingService;
-import com.sophos.restlogiccore.services.SoapClientProcessorService;
+import com.sophos.restlogiccore.services.ISoapFieldService;
 import com.sophos.restlogiccore.services.TranslateService;
 import com.sophos.restlogiccore.utils.JsonCreatorUtil;
 
@@ -27,16 +32,22 @@ public class RestTranslateController {
 	private TranslateService translateService;
 	@Autowired
 	private JsonCreatorUtil jsonCreatorUtil;
+//	@Autowired
+//	private SoapClientProcessorService soapClientProcessorService;
+
 	@Autowired
-	private SoapClientProcessorService soapClientProcessorService;
+	private IFieldService iFieldService;
 
 	@Autowired
 	private IMappingService iMappingService;
 
+	@Autowired
+	private ISoapFieldService isopFieldService;
+
 	@GetMapping(path = "/reciveMessage")
 	public ResponseEntity<Object> reciveMessage() {
-		System.out.println("reciveMessage");
 
+		iMappingService.generateMappings(null, new HashMap<String, String>());
 
 		return null;
 
@@ -45,8 +56,8 @@ public class RestTranslateController {
 	@PostMapping(path = "/call", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TranslateResponse> messageRecieve(@Valid @RequestBody ListenerRequest request) {
 
-		return new ResponseEntity<TranslateResponse>(new TranslateResponse() , HttpStatus.OK);
-		
+		return new ResponseEntity<TranslateResponse>(new TranslateResponse(), HttpStatus.OK);
+
 //		TranslateResponse response = null;
 //		JsonStatusRs status;
 //		try {

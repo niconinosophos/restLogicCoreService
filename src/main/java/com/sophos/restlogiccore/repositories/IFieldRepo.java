@@ -6,4 +6,6 @@ import com.sophos.restlogiccore.dtos.Field;
 
 public interface IFieldRepo extends JpaRepository<Field, Integer> {
 
+	Field findByFieldIsoId(int fildIsoId);
+
 }

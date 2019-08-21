@@ -6,5 +6,4 @@ import com.sophos.restlogiccore.dtos.SoapField;
 
 public interface ISoapFieldRepo extends JpaRepository<SoapField, Integer> {
 
-	public SoapField findById(int id);
 }
